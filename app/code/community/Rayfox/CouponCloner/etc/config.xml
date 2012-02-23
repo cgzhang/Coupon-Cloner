@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    Rayfox
+ * @package     Rayfox_CouponCloner
+ * @copyright   Copyright (c) 2011 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+-->
+<config>
+	<modules>
+		<Rayfox_CouponCloner>
+			<version>0.1.0</version>
+		</Rayfox_CouponCloner>
+	</modules>
+	<global>
+		<blocks>
+			<adminhtml> 
+				<rewrite> 
+					<promo_quote_grid>Rayfox_CouponCloner_Block_Adminhtml_Promo_Quote_Grid</promo_quote_grid>
+				</rewrite> 
+			</adminhtml>
+		</blocks>
+		<helpers>
+			<couponcloner>
+				<class>Rayfox_CouponCloner_Helper</class>
+			</couponcloner>
+		</helpers>
+	</global>
+	<admin>
+         <routers>
+            <adminhtml>
+                <args>
+                    <modules>
+                        <couponcloner before="Mage_Adminhtml">Rayfox_CouponCloner_Adminhtml</couponcloner>
+                    </modules>
+                </args>
+            </adminhtml>
+        </routers>
+    </admin>
+	<adminhtml>
+		<acl>
+			<resources>
+				<admin>
+					<children>
+						<system>
+						<children>
+							<config>
+								<children>
+									<coupon_cloner_options>
+										<title>Coupon Cloner</title>
+									</coupon_cloner_options>
+								</children>
+								</config>
+							</children>
+						</system>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+	</adminhtml>
+</config>
